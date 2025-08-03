@@ -22,8 +22,8 @@ def get_db_cursor(commit=False):
 def fetch_expenses_for_date(expense_date):
     with get_db_cursor() as cursor:
         cursor.execute("SELECT * FROM expenses WHERE expense_date = %s", (expense_date,))
-        expenses = cursor.fetchall()
-        return expenses
+        trans = cursor.fetchall()
+        return trans
 
 
 def delete_expenses_for_date(expense_date):
@@ -53,6 +53,6 @@ def fetch_expense_summary(start_date, end_date):
 
 
 if __name__ == "__main__":
-    expenses = fetch_expenses_for_date("2024-08-15")
-    for expense in expenses:
-        print(expense)
+    expenses = fetch_expenses_for_date("2024-09-30")
+
+    print(expenses)
